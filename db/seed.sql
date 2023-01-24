@@ -23,7 +23,7 @@ INSERT INTO worker
     (first_name, last_name, role_id)
 VALUES
     ('Josh', 'Dosea', 3),
-    ('Mike', 'Chan', 6),
+    ('chris', 'err', 6),
     ('Ashley', 'Rodriguez', 9),
     ('Kevin', 'Tupik', 12),
     ('paul', 'courts', 15),
