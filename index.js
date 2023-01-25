@@ -247,3 +247,45 @@ function viewstaff() {
       })
   }
   
+  function viewRoles() {
+    db.findAllRoles()
+        .then(([rows]) => {
+            let roles = rows;
+            console.log("");
+            console.table(roles);
+        })
+        .then(() => loadMainPrompts());
+  }
+
+  function addRole() {
+    db.findAllDepartments()
+      .then(([rows]) => {
+        let departments = rows;
+        const departmentChoices = departments.map(({ id, name }) => ({
+          name: name,
+          value: id
+        }));
+  
+        prompt([
+          {
+            name: "title",
+            message: "What is the name of the role?"
+          },
+          {
+            name: "pay",
+            message: "What is the pay for this role?"
+          },
+          {
+            type: "list",
+            name: "department_id",
+            message: "Which department is the role for?",
+            choices: departmentChoices
+          }
+        ])
+          .then(role => {
+            db.createRole(role)
+              .then(() => console.log(`Added ${role.title} to the database`))
+              .then(() => loadMainPrompts())
+          })
+      })
+  }
