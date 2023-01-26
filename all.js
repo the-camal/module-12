@@ -1,3 +1,5 @@
+const all = require("./db");
+const veiw = require("./index");
 
 
 function viewDepartments() {
